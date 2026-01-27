@@ -172,10 +172,11 @@
     <t t-set="projects" t-value="request.env['project.project'].sudo().search([('partner_id','=', partner_id), ('active','=', True)], limit=6, order='create_date desc')"/>
     <t t-set="projects_list" t-value="list(projects)"/>
     <t t-set="project_ids" t-value="[p.id for p in projects_list]"/>
-    <t t-set="chat_messages" t-value="request.env['x_portal_message'].sudo().search([('x_project_id', 'in', project_ids), ('x_is_from_staff', '=', True)], limit=15, order='create_date desc')"/>
+    <t t-set="chat_messages" t-value="request.env['x_portal_message'].sudo().search([('x_project_id', 'in', project_ids), ('x_is_from_staff', '=', True), ('x_confirmacion_lectura', '=', False)], limit=15, order='create_date desc')"/>
     <t t-set="invoices" t-value="request.env['account.move'].sudo().search([('partner_id', '=', partner_id), ('move_type', 'in', ['out_invoice', 'out_refund']), ('state', '=', 'posted')], limit=10, order='invoice_date desc')"/>
     <t t-set="quotations" t-value="request.env['sale.order'].sudo().search([('partner_id', '=', partner_id), ('state', 'in', ['sent', 'draft'])], limit=10, order='date_order desc')"/>
-    <t t-set="total_unread" t-value="len(chat_messages) + len(invoices) + len(quotations)"/>
+    <t t-set="unread_msg_count" t-value="len([m for m in chat_messages if not m.x_confirmacion_lectura])"/>
+    <t t-set="total_unread" t-value="unread_msg_count + len(invoices) + len(quotations)"/>
 
     <t t-if="projects_list">
       <div class="gp9-portal-section">
@@ -197,13 +198,13 @@
                   <t t-if="chat_messages">
                     <div class="gp9-notif-section-title"><i class="fa fa-comments"/>Mensajes</div>
                     <t t-foreach="chat_messages" t-as="msg">
-                      <a t-attf-href="/my/project/#{msg.x_project_id.id}#chat" class="gp9-notif-item is-unread">
+                      <a t-attf-href="/my/project/#{msg.x_project_id.id}#chat" t-attf-class="gp9-notif-item #{'' if msg.x_confirmacion_lectura else 'is-unread'}" t-att-data-msg-id="msg.id">
                         <div class="gp9-notif-icon gp9-notif-icon--chat"><i class="fa fa-comment"/></div>
                         <div class="gp9-notif-content">
                           <t t-if="msg.x_project_id"><div class="gp9-notif-project"><t t-esc="msg.x_project_id.name"/></div></t>
                           <div class="gp9-notif-title">Nuevo mensaje</div>
                         </div>
-                        <span class="gp9-notif-dot"/>
+                        <t t-if="not msg.x_confirmacion_lectura"><span class="gp9-notif-dot"/></t>
                       </a>
                     </t>
                   </t>
@@ -292,7 +293,46 @@
         var nb=document.getElementById('gp9NotifBtn'),nd=document.getElementById('gp9NotifDropdown');
         if(nb&amp;&amp;nd){nb.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();nd.classList.toggle('is-open');nb.classList.toggle('is-active');});document.addEventListener('click',function(e){if(!nb.contains(e.target)&amp;&amp;!nd.contains(e.target)){nd.classList.remove('is-open');nb.classList.remove('is-active');}});}
         document.querySelectorAll('.gp9-notif-tab').forEach(function(t){t.addEventListener('click',function(){var n=this.getAttribute('data-tab');document.querySelectorAll('.gp9-notif-tab').forEach(function(x){x.classList.remove('is-active');});document.querySelectorAll('.gp9-notif-panel').forEach(function(x){x.classList.remove('is-active');});this.classList.add('is-active');document.getElementById(n==='projects'?'gp9PanelProjects':'gp9PanelAdmin').classList.add('is-active');});});
-        var ma=document.getElementById('gp9MarkAllRead');if(ma){ma.addEventListener('click',function(){document.querySelectorAll('.gp9-notif-item').forEach(function(i){i.classList.remove('is-unread');var d=i.querySelector('.gp9-notif-dot');if(d)d.style.display='none';});document.querySelectorAll('.gp9-notif-badge').forEach(function(b){b.style.display='none';});});}
+          
+          // Función para marcar mensaje como leído via AJAX
+          function markMessageRead(msgId){
+            var xhr=new XMLHttpRequest();
+            xhr.open('POST','/web/dataset/call_kw',true);
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send(JSON.stringify({
+              jsonrpc:'2.0',
+              method:'call',
+              params:{
+                model:'x_portal_message',
+                method:'write',
+                args:[[parseInt(msgId)],{x_confirmacion_lectura:true}],
+                kwargs:{}
+              }
+            }));
+          }
+
+          // Marcar mensaje individual con mousedown (se ejecuta antes del click)
+          document.querySelectorAll('.gp9-notif-item[data-msg-id]').forEach(function(item){
+            item.addEventListener('mousedown',function(){
+              var msgId=this.getAttribute('data-msg-id');
+              if(msgId){markMessageRead(msgId);}
+            });
+          });
+
+          // Marcar todo como leído
+          var ma=document.getElementById('gp9MarkAllRead');
+          if(ma){
+            ma.addEventListener('click',function(){
+              document.querySelectorAll('.gp9-notif-item[data-msg-id]').forEach(function(i){
+                var msgId=i.getAttribute('data-msg-id');
+                if(msgId){markMessageRead(msgId);}
+                i.classList.remove('is-unread');
+                var d=i.querySelector('.gp9-notif-dot');
+                if(d)d.style.display='none';
+              });
+              document.querySelectorAll('.gp9-notif-badge').forEach(function(b){b.style.display='none';});
+            });
+          }
       })();
       </script>
     </t>
