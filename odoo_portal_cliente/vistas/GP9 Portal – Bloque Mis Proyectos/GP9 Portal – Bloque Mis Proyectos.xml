@@ -1,1507 +1,307 @@
 <data name="GP9 Portal Home Proyectos" inherit_id="portal.portal_my_home" priority="50">
   
-  <xpath expr="//div[@id='oe_structure_portal_my_home_1']" position="after">
+  <xpath expr="//div[hasclass('o_portal_my_home')]" position="before">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet"/>
     
     <style type="text/css">
-      :root {
-        --gp9-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        --gp9-primary: #6366f1;
-        --gp9-primary-light: #818cf8;
-        --gp9-primary-dark: #4f46e5;
-        --gp9-primary-glow: rgba(99, 102, 241, 0.4);
-        --gp9-success: #10b981;
-        --gp9-success-light: #34d399;
-        --gp9-warning: #f59e0b;
-        --gp9-warning-light: #fbbf24;
-        --gp9-danger: #ef4444;
-        --gp9-danger-light: #f87171;
-        --gp9-info: #3b82f6;
-        --gp9-white: #ffffff;
-        --gp9-gray-50: #f8fafc;
-        --gp9-gray-100: #f1f5f9;
-        --gp9-gray-200: #e2e8f0;
-        --gp9-gray-300: #cbd5e1;
-        --gp9-gray-400: #94a3b8;
-        --gp9-gray-500: #64748b;
-        --gp9-gray-600: #475569;
-        --gp9-gray-700: #334155;
-        --gp9-gray-800: #1e293b;
-        --gp9-gray-900: #0f172a;
-        --gp9-glass-bg: rgba(255, 255, 255, 0.85);
-        --gp9-glass-border: rgba(255, 255, 255, 0.4);
-      }
-      
-      #wrapwrap, .o_portal {
-        background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 50%, #f0fdfa 100%) !important;
-        min-height: 100vh;
-      }
-      
-      .o_portal_wrap &gt; .container &gt; .row &gt; .col-lg-6:first-child,
-      .o_portal_wrap .col-lg-6:has(.o_portal_my_home) {
-        flex: 0 0 auto !important;
-        width: 73% !important;
-        max-width: 73% !important;
-      }
-      
-      #o_my_sidebar {
-        flex: 0 0 auto !important;
-        width: 25% !important;
-        max-width: 25% !important;
-      }
-      
-      @media (max-width: 1199.98px) {
-        .o_portal_wrap &gt; .container &gt; .row &gt; .col-lg-6:first-child,
-        .o_portal_wrap .col-lg-6:has(.o_portal_my_home) {
-          width: 65% !important;
-          max-width: 65% !important;
-        }
-        #o_my_sidebar {
-          width: 33% !important;
-          max-width: 33% !important;
-        }
-      }
-      
-      @media (max-width: 991.98px) {
-        .o_portal_wrap &gt; .container &gt; .row &gt; .col-lg-6:first-child,
-        .o_portal_wrap .col-lg-6:has(.o_portal_my_home) {
-          width: 100% !important;
-          max-width: 100% !important;
-        }
-        #o_my_sidebar {
-          width: 100% !important;
-          max-width: 100% !important;
-        }
-      }
-      
-      .o_portal_wrap {
-        position: relative;
-      }
-      
-      .o_portal_wrap::before {
-        content: '';
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-image: radial-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px);
-        background-size: 20px 20px;
-        pointer-events: none;
-        z-index: 0;
-      }
-      
-      .o_portal_wrap &gt; * {
-        position: relative;
-        z-index: 1;
-      }
-      
-      .gp9-portal-section {
-        font-family: var(--gp9-font);
-      }
-      
-      .gp9-portal-section * {
-        font-family: inherit;
-      }
-      
-      .gp9-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      
-      .gp9-header-left {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-      
-      .gp9-header-right {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-      
-      .gp9-title {
-        font-size: 2rem;
-        font-weight: 300;
-        color: var(--gp9-gray-800);
-        letter-spacing: -0.025em;
-        margin: 0;
-      }
-      
-      .gp9-title span {
-        font-weight: 600;
-      }
-      
-      .gp9-notifications-wrapper {
-        position: relative;
-      }
-      
-      .gp9-btn-notifications {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        background: var(--gp9-white);
-        border: 1px solid var(--gp9-gray-200);
-        border-radius: 12px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      }
-      
-      .gp9-btn-notifications:hover {
-        border-color: var(--gp9-primary);
-        background: rgba(99, 102, 241, 0.05);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
-      }
-      
-      .gp9-btn-notifications.is-active {
-        border-color: var(--gp9-primary);
-        background: rgba(99, 102, 241, 0.1);
-      }
-      
-      .gp9-btn-notifications i {
-        font-size: 1.1rem;
-        color: var(--gp9-gray-600);
-        transition: color 0.2s ease;
-      }
-      
-      .gp9-btn-notifications:hover i,
-      .gp9-btn-notifications.is-active i {
-        color: var(--gp9-primary);
-      }
-      
-      .gp9-notif-badge {
-        position: absolute;
-        top: -4px;
-        right: -4px;
-        min-width: 20px;
-        height: 20px;
-        padding: 0 6px;
-        background: linear-gradient(135deg, var(--gp9-danger), var(--gp9-danger-light));
-        color: var(--gp9-white);
-        font-size: 0.7rem;
-        font-weight: 700;
-        border-radius: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
-        animation: gp9-pulse 2s infinite;
-      }
-      
-      @keyframes gp9-pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-      }
-      
-      .gp9-notifications-dropdown {
-        position: absolute;
-        top: calc(100% + 8px);
-        right: 0;
-        width: 420px;
-        max-height: 560px;
-        background: var(--gp9-white);
-        border-radius: 16px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.05);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1000;
-        overflow: hidden;
-      }
-      
-      .gp9-notifications-dropdown.is-open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-      
-      .gp9-notif-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 1.25rem;
-        border-bottom: 1px solid var(--gp9-gray-100);
-        background: var(--gp9-gray-50);
-      }
-      
-      .gp9-notif-header h4 {
-        margin: 0;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--gp9-gray-800);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      
-      .gp9-notif-header h4 i {
-        color: var(--gp9-primary);
-      }
-      
-      .gp9-notif-count-label {
-        font-size: 0.75rem;
-        color: var(--gp9-gray-500);
-        font-weight: 400;
-      }
-      
-      .gp9-btn-mark-all {
-        font-size: 0.75rem;
-        color: var(--gp9-primary);
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.25rem 0.5rem;
-        border-radius: 6px;
-        transition: all 0.2s ease;
-        font-weight: 500;
-      }
-      
-      .gp9-btn-mark-all:hover {
-        background: rgba(99, 102, 241, 0.1);
-      }
-      
-      .gp9-notif-tabs {
-        display: flex;
-        border-bottom: 1px solid var(--gp9-gray-100);
-        padding: 0 0.5rem;
-        background: var(--gp9-white);
-      }
-      
-      .gp9-notif-tab {
-        flex: 1;
-        padding: 0.875rem 1rem;
-        font-size: 0.8rem;
-        font-weight: 500;
-        color: var(--gp9-gray-500);
-        background: none;
-        border: none;
-        cursor: pointer;
-        position: relative;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-      
-      .gp9-notif-tab:hover {
-        color: var(--gp9-gray-700);
-      }
-      
-      .gp9-notif-tab.is-active {
-        color: var(--gp9-primary);
-      }
-      
-      .gp9-notif-tab.is-active::after {
-        content: '';
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: var(--gp9-primary);
-        border-radius: 2px 2px 0 0;
-      }
-      
-      .gp9-notif-tab i {
-        font-size: 0.9rem;
-      }
-      
-      .gp9-notif-tab-badge {
-        min-width: 18px;
-        height: 18px;
-        padding: 0 5px;
-        background: var(--gp9-gray-200);
-        color: var(--gp9-gray-600);
-        font-size: 0.65rem;
-        font-weight: 600;
-        border-radius: 100px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .gp9-notif-tab.is-active .gp9-notif-tab-badge {
-        background: rgba(99, 102, 241, 0.15);
-        color: var(--gp9-primary);
-      }
-      
-      .gp9-notif-panel {
-        display: none;
-        max-height: 380px;
-        overflow-y: auto;
-        padding: 0.5rem;
-      }
-      
-      .gp9-notif-panel.is-active {
-        display: block;
-      }
-      
-      .gp9-notif-panel::-webkit-scrollbar {
-        width: 6px;
-      }
-      
-      .gp9-notif-panel::-webkit-scrollbar-thumb {
-        background: var(--gp9-gray-200);
-        border-radius: 100px;
-      }
-      
-      .gp9-notif-section-title {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: var(--gp9-gray-400);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      
-      .gp9-notif-section-title i {
-        font-size: 0.75rem;
-      }
-      
-      .gp9-notif-item {
-        display: flex;
-        gap: 0.875rem;
-        padding: 0.875rem;
-        border-radius: 12px;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        margin-bottom: 0.25rem;
-        position: relative;
-      }
-      
-      .gp9-notif-item:hover {
-        background: var(--gp9-gray-50);
-        text-decoration: none;
-      }
-      
-      .gp9-notif-item.is-unread {
-        background: rgba(99, 102, 241, 0.04);
-      }
-      
-      .gp9-notif-item.is-unread:hover {
-        background: rgba(99, 102, 241, 0.08);
-      }
-      
-      .gp9-notif-item.is-read {
-        opacity: 0.7;
-      }
-      
-      .gp9-notif-item.is-read:hover {
-        opacity: 1;
-      }
-      
-      .gp9-notif-icon {
-        flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-      }
-      
-      .gp9-notif-icon--chat {
-        background: rgba(99, 102, 241, 0.1);
-        color: var(--gp9-primary);
-      }
-      
-      .gp9-notif-icon--invoice {
-        background: rgba(16, 185, 129, 0.1);
-        color: var(--gp9-success);
-      }
-      
-      .gp9-notif-icon--order {
-        background: rgba(59, 130, 246, 0.1);
-        color: var(--gp9-info);
-      }
-      
-      .gp9-notif-icon--quote {
-        background: rgba(139, 92, 246, 0.1);
-        color: #8b5cf6;
-      }
-      
-      .gp9-notif-icon--document {
-        background: rgba(245, 158, 11, 0.1);
-        color: var(--gp9-warning);
-      }
-      
-      .gp9-notif-icon--project {
-        background: rgba(59, 130, 246, 0.1);
-        color: var(--gp9-info);
-      }
-      
-      .gp9-notif-content {
-        flex: 1;
-        min-width: 0;
-      }
-      
-      .gp9-notif-title {
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--gp9-gray-800);
-        margin-bottom: 0.2rem;
-        line-height: 1.3;
-      }
-      
-      .gp9-notif-item.is-unread .gp9-notif-title {
-        font-weight: 600;
-      }
-      
-      .gp9-notif-project {
-        font-size: 0.75rem;
-        color: var(--gp9-primary);
-        font-weight: 500;
-        margin-bottom: 0.2rem;
-        display: flex;
-        align-items: center;
-        gap: 0.35rem;
-      }
-      
-      .gp9-notif-project i {
-        font-size: 0.65rem;
-      }
-      
-      .gp9-notif-desc {
-        font-size: 0.78rem;
-        color: var(--gp9-gray-500);
-        line-height: 1.4;
-        margin-bottom: 0.3rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      
-      .gp9-notif-meta {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        font-size: 0.7rem;
-        color: var(--gp9-gray-400);
-      }
-      
-      .gp9-notif-meta i {
-        font-size: 0.6rem;
-      }
-      
-      .gp9-notif-dot {
-        position: absolute;
-        top: 50%;
-        right: 0.75rem;
-        transform: translateY(-50%);
-        width: 8px;
-        height: 8px;
-        background: var(--gp9-primary);
-        border-radius: 50%;
-      }
-      
-      .gp9-notif-item.is-read .gp9-notif-dot {
-        display: none;
-      }
-      
-      .gp9-notif-empty {
-        padding: 3rem 1.5rem;
-        text-align: center;
-      }
-      
-      .gp9-notif-empty i {
-        font-size: 2.5rem;
-        color: var(--gp9-gray-300);
-        margin-bottom: 1rem;
-      }
-      
-      .gp9-notif-empty p {
-        margin: 0;
-        color: var(--gp9-gray-500);
-        font-size: 0.875rem;
-      }
-      
-      .gp9-notif-empty-sub {
-        font-size: 0.8rem;
-        color: var(--gp9-gray-400);
-        margin-top: 0.25rem;
-      }
-      
-      .gp9-notif-footer {
-        padding: 0.75rem 1.25rem;
-        border-top: 1px solid var(--gp9-gray-100);
-        text-align: center;
-        background: var(--gp9-gray-50);
-      }
-      
-      .gp9-btn-view-all {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.8rem;
-        font-weight: 500;
-        color: var(--gp9-primary);
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        transition: all 0.2s ease;
-      }
-      
-      .gp9-btn-view-all:hover {
-        background: rgba(99, 102, 241, 0.1);
-        text-decoration: none;
-      }
-      
-      .gp9-btn-ver-todos {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.625rem 1.25rem;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: var(--gp9-gray-600);
-        background: var(--gp9-white);
-        border: 1px solid var(--gp9-gray-200);
-        border-radius: 100px;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      }
-      
-      .gp9-btn-ver-todos:hover {
-        color: var(--gp9-primary);
-        border-color: var(--gp9-primary);
-        background: rgba(99, 102, 241, 0.05);
-        transform: translateX(4px);
-        text-decoration: none;
-      }
-      
-      .gp9-btn-ver-todos i {
-        font-size: 0.75rem;
-        transition: transform 0.2s ease;
-      }
-      
-      .gp9-btn-ver-todos:hover i {
-        transform: translateX(2px);
-      }
-      
-      .gp9-projects-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.25rem;
-        align-items: start;
-      }
-      
-      @media (max-width: 1199.98px) {
-        .gp9-projects-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1rem;
-        }
-      }
-      
-      @media (max-width: 767.98px) {
-        .gp9-projects-grid {
-          grid-template-columns: 1fr;
-          gap: 1rem;
-        }
-        .gp9-title { font-size: 1.5rem; }
-        .gp9-header { flex-direction: column; align-items: flex-start; }
-        .gp9-header-right { width: 100%; justify-content: space-between; }
-        .gp9-notifications-dropdown { width: calc(100vw - 2rem); right: -1rem; }
-      }
-      
-      @media (max-width: 575.98px) {
-        .gp9-card-body { padding: 1rem; padding-left: 1.25rem; }
-        .gp9-card-title { font-size: 1rem; }
-        .gp9-badge { padding: 0.25rem 0.5rem; font-size: 0.65rem; }
-        .gp9-btn-action { padding: 0.5rem 0.4rem; font-size: 0.7rem; }
-        .gp9-btn-secondary { padding: 0.45rem 0.35rem; font-size: 0.65rem; }
-        .gp9-info-row { flex-direction: column; gap: 0.5rem; padding: 0.6rem 0.75rem; }
-        .gp9-info-item-inline { font-size: 0.75rem; }
-        .gp9-notif-tabs { padding: 0; }
-        .gp9-notif-tab { padding: 0.75rem 0.5rem; font-size: 0.75rem; }
-      }
-      
-      .gp9-card {
-        position: relative;
-        background: var(--gp9-glass-bg);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 16px;
-        border: 1px solid var(--gp9-glass-border);
-        overflow: hidden;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        animation: gp9-fade-in 0.5s ease forwards;
-        opacity: 0;
-      }
-      
-      .gp9-card:nth-child(1) { animation-delay: 0.05s; }
-      .gp9-card:nth-child(2) { animation-delay: 0.1s; }
-      .gp9-card:nth-child(3) { animation-delay: 0.15s; }
-      .gp9-card:nth-child(4) { animation-delay: 0.2s; }
-      .gp9-card:nth-child(5) { animation-delay: 0.25s; }
-      .gp9-card:nth-child(6) { animation-delay: 0.3s; }
-      
-      @keyframes gp9-fade-in {
-        from { opacity: 0; transform: translateY(16px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      
-      .gp9-card--success { box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1), 0 1px 3px rgba(0, 0, 0, 0.04); }
-      .gp9-card--success:hover { box-shadow: 0 12px 36px rgba(16, 185, 129, 0.18), 0 4px 12px rgba(0, 0, 0, 0.05); transform: translateY(-4px); }
-      .gp9-card--warning { box-shadow: 0 4px 20px rgba(245, 158, 11, 0.1), 0 1px 3px rgba(0, 0, 0, 0.04); }
-      .gp9-card--warning:hover { box-shadow: 0 12px 36px rgba(245, 158, 11, 0.18), 0 4px 12px rgba(0, 0, 0, 0.05); transform: translateY(-4px); }
-      .gp9-card--danger { box-shadow: 0 4px 20px rgba(239, 68, 68, 0.1), 0 1px 3px rgba(0, 0, 0, 0.04); }
-      .gp9-card--danger:hover { box-shadow: 0 12px 36px rgba(239, 68, 68, 0.18), 0 4px 12px rgba(0, 0, 0, 0.05); transform: translateY(-4px); }
-      
-      .gp9-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
-      .gp9-card--success::before { background: linear-gradient(180deg, var(--gp9-success), var(--gp9-success-light)); }
-      .gp9-card--warning::before { background: linear-gradient(180deg, var(--gp9-warning), var(--gp9-warning-light)); }
-      .gp9-card--danger::before { background: linear-gradient(180deg, var(--gp9-danger), var(--gp9-danger-light)); }
-      
-      .gp9-card-body { padding: 1.5rem; padding-left: 1.75rem; }
-      .gp9-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem; }
-      .gp9-card-title { font-size: 1.125rem; font-weight: 600; color: var(--gp9-gray-800); margin: 0; line-height: 1.3; }
-      
-      .gp9-badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.7rem; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
-      .gp9-badge--success { color: var(--gp9-success); background: rgba(16, 185, 129, 0.12); }
-      .gp9-badge--warning { color: #b45309; background: rgba(245, 158, 11, 0.12); }
-      .gp9-badge--danger { color: var(--gp9-danger); background: rgba(239, 68, 68, 0.12); }
-      .gp9-badge i { font-size: 0.55rem; }
-      
-      .gp9-stage { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--gp9-gray-500); margin-bottom: 1rem; }
-      .gp9-stage i { font-size: 0.7rem; opacity: 0.7; }
-      
-      .gp9-info-row { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem; padding: 0.75rem 1rem; background: var(--gp9-gray-50); border-radius: 10px; flex-wrap: wrap; }
-      .gp9-info-item-inline { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--gp9-gray-600); }
-      .gp9-info-item-inline i { color: var(--gp9-gray-400); font-size: 0.75rem; width: 1rem; }
-      .gp9-info-item-inline strong { color: var(--gp9-gray-700); font-weight: 600; }
-      
-      .gp9-progress-section { margin-bottom: 1.25rem; }
-      .gp9-progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-      .gp9-progress-label { font-size: 0.7rem; font-weight: 600; color: var(--gp9-gray-400); text-transform: uppercase; letter-spacing: 0.05em; }
-      .gp9-progress-value { font-size: 0.875rem; font-weight: 700; color: var(--gp9-gray-700); }
-      .gp9-progress-track { height: 6px; background: var(--gp9-gray-100); border-radius: 100px; overflow: hidden; }
-      .gp9-progress-bar { height: 100%; border-radius: 100px; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
-      .gp9-progress-bar::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: gp9-shimmer 2s infinite; }
-      @keyframes gp9-shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-      .gp9-progress-bar--success { background: linear-gradient(90deg, var(--gp9-success), var(--gp9-success-light)); }
-      .gp9-progress-bar--warning { background: linear-gradient(90deg, var(--gp9-warning), var(--gp9-warning-light)); }
-      .gp9-progress-bar--danger { background: linear-gradient(90deg, var(--gp9-danger), var(--gp9-danger-light)); }
-      
-      .gp9-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem; }
-      .gp9-btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.6rem 0.5rem; font-size: 0.75rem; font-weight: 500; color: var(--gp9-gray-600); background: var(--gp9-white); border: 1px solid var(--gp9-gray-200); border-radius: 8px; text-decoration: none; transition: all 0.2s ease; }
-      .gp9-btn-action:hover { color: var(--gp9-primary); border-color: var(--gp9-primary); background: rgba(99, 102, 241, 0.05); text-decoration: none; }
-      .gp9-btn-action i { font-size: 0.75rem; opacity: 0.7; }
-      
-      .gp9-actions-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
-      .gp9-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; padding: 0.5rem 0.4rem; font-size: 0.7rem; font-weight: 500; color: var(--gp9-gray-500); background: transparent; border: 1px dashed var(--gp9-gray-200); border-radius: 8px; text-decoration: none; transition: all 0.2s ease; }
-      .gp9-btn-secondary:hover { color: var(--gp9-primary); border-color: var(--gp9-primary); border-style: solid; background: rgba(99, 102, 241, 0.03); text-decoration: none; }
-      .gp9-btn-secondary i { font-size: 0.7rem; opacity: 0.6; }
-      
-      .gp9-btn-toggle { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem 1rem; font-size: 0.8rem; font-weight: 500; color: var(--gp9-gray-500); background: var(--gp9-gray-50); border: none; border-radius: 10px; cursor: pointer; transition: all 0.2s ease; }
-      .gp9-btn-toggle:hover { color: var(--gp9-gray-700); background: var(--gp9-gray-100); }
-      .gp9-btn-toggle.is-active { color: var(--gp9-primary); background: rgba(99, 102, 241, 0.1); }
-      .gp9-btn-toggle i { font-size: 0.6rem; transition: transform 0.3s ease; }
-      .gp9-btn-toggle.is-active i { transform: rotate(180deg); }
-      
-      .gp9-details { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; margin-top: 0; }
-      .gp9-details.is-open { grid-template-rows: 1fr; margin-top: 1rem; }
-      .gp9-details-inner { overflow: hidden; }
-      .gp9-details-content { padding-top: 1rem; border-top: 1px solid var(--gp9-gray-100); }
-      
-      .gp9-status-msg { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.875rem 1rem; border-radius: 10px; margin-bottom: 1rem; font-size: 0.8rem; line-height: 1.5; }
-      .gp9-status-msg--success { background: rgba(16, 185, 129, 0.08); color: var(--gp9-gray-700); }
-      .gp9-status-msg--warning { background: rgba(245, 158, 11, 0.08); color: var(--gp9-gray-700); }
-      .gp9-status-msg--danger { background: rgba(239, 68, 68, 0.08); color: var(--gp9-gray-700); }
-      .gp9-status-msg i { font-size: 1rem; margin-top: 0.1rem; }
-      .gp9-status-msg--success i { color: var(--gp9-success); }
-      .gp9-status-msg--warning i { color: var(--gp9-warning); }
-      .gp9-status-msg--danger i { color: var(--gp9-danger); }
-      
-      .gp9-info-item { display: flex; align-items: center; gap: 0.625rem; font-size: 0.8rem; color: var(--gp9-gray-600); margin-bottom: 0.5rem; }
-      .gp9-info-item i { width: 1rem; color: var(--gp9-gray-400); font-size: 0.75rem; }
-      
-      .gp9-team { margin-bottom: 1rem; }
-      .gp9-team-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; font-weight: 600; color: var(--gp9-gray-400); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
-      .gp9-team-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-      .gp9-team-member { display: inline-flex; align-items: center; padding: 0.3rem 0.65rem; font-size: 0.7rem; font-weight: 500; color: var(--gp9-gray-600); background: var(--gp9-white); border: 1px solid var(--gp9-gray-200); border-radius: 100px; }
-      
-      .gp9-notes { padding: 0.75rem 1rem; background: var(--gp9-gray-50); border-radius: 10px; border-left: 3px solid var(--gp9-primary-light); font-size: 0.8rem; color: var(--gp9-gray-600); line-height: 1.6; margin-bottom: 1rem; }
-      
-      .gp9-btn-project { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem 1.25rem; font-size: 0.85rem; font-weight: 600; color: var(--gp9-white); background: linear-gradient(135deg, var(--gp9-primary), var(--gp9-primary-light)); border: none; border-radius: 10px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 4px 12px var(--gp9-primary-glow); }
-      .gp9-btn-project:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--gp9-primary-glow); color: var(--gp9-white); text-decoration: none; }
-      .gp9-btn-project i { font-size: 0.7rem; transition: transform 0.2s ease; }
-      .gp9-btn-project:hover i { transform: translateX(4px); }
-      
-      /* Ocultar items */
-      .o_portal .list-group-item[href*="/my/tasks"],
-      .o_portal .list-group-item[href*="/my/task"],
-      .o_portal .list-group-item[href*="/my/timesheets"],
-      .o_portal .list-group-item[href*="/my/timesheet"],
-      .o_portal .list-group-item[href*="/my/signatures"],
-      .o_portal .list-group-item[href*="/my/signature"],
-      .o_portal .list-group-item[href*="/my/sign"] {
-        display: none !important;
-      }
-      
-      .o_portal_my_home h3 { font-family: var(--gp9-font) !important; font-size: 1.5rem !important; font-weight: 300 !important; color: var(--gp9-gray-800) !important; margin-top: 3rem !important; margin-bottom: 1.5rem !important; }
-      .o_portal_my_home h3 strong, .o_portal_my_home h3 b { font-weight: 600 !important; }
-      
-      .o_portal_docs.list-group, .o_portal .list-group { font-family: var(--gp9-font) !important; background: var(--gp9-glass-bg) !important; backdrop-filter: blur(10px) !important; border-radius: 16px !important; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important; border: 1px solid var(--gp9-glass-border) !important; overflow: hidden !important; padding: 0.5rem !important; }
-      .o_portal_docs .list-group-item, .o_portal .list-group-item { font-family: var(--gp9-font) !important; display: flex !important; align-items: center !important; justify-content: space-between !important; border: none !important; padding: 1rem 1.25rem !important; margin: 0.25rem 0 !important; border-radius: 10px !important; background: transparent !important; color: var(--gp9-gray-700) !important; font-weight: 500 !important; font-size: 0.9375rem !important; transition: all 0.2s ease !important; text-decoration: none !important; }
-      .o_portal .list-group-item:hover { background: var(--gp9-white) !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important; transform: translateX(4px) !important; color: var(--gp9-primary) !important; }
-      .o_portal .list-group-item .badge { background: linear-gradient(135deg, var(--gp9-gray-700), var(--gp9-gray-800)) !important; color: var(--gp9-white) !important; border-radius: 100px !important; padding: 0.375rem 0.75rem !important; font-weight: 600 !important; font-size: 0.75rem !important; }
-      
-      #o_my_sidebar .o_portal_my_details, .o_portal_my_details { font-family: var(--gp9-font) !important; background: var(--gp9-glass-bg) !important; backdrop-filter: blur(10px) !important; border-radius: 16px !important; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important; padding: 1.5rem !important; border: 1px solid var(--gp9-glass-border) !important; margin-bottom: 1.5rem !important; }
-      #o_my_sidebar .o_portal_my_details h4, .o_portal_my_details h4 { font-family: var(--gp9-font) !important; font-size: 0.7rem !important; font-weight: 600 !important; color: var(--gp9-gray-500) !important; text-transform: uppercase !important; letter-spacing: 0.1em !important; margin-bottom: 1rem !important; padding-bottom: 0.75rem !important; border-bottom: 1px solid var(--gp9-gray-100) !important; }
-      .o_portal_my_details address { font-style: normal !important; color: var(--gp9-gray-600) !important; line-height: 1.8 !important; font-size: 0.875rem !important; }
-      .o_portal_my_details hr { display: none !important; }
-      
-      #o_my_sidebar .o_portal_my_security, .o_portal_my_security { font-family: var(--gp9-font) !important; background: var(--gp9-glass-bg) !important; backdrop-filter: blur(10px) !important; border-radius: 16px !important; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important; padding: 1.5rem !important; border: 1px solid var(--gp9-glass-border) !important; }
-      .o_portal_my_security h4 { font-family: var(--gp9-font) !important; font-size: 0.7rem !important; font-weight: 600 !important; color: var(--gp9-gray-500) !important; text-transform: uppercase !important; letter-spacing: 0.1em !important; margin-bottom: 0.75rem !important; padding-bottom: 0.5rem !important; border-bottom: 1px solid var(--gp9-gray-100) !important; }
-      .o_portal_my_security hr { display: none !important; }
-      .o_portal_my_security a { color: var(--gp9-primary) !important; text-decoration: none !important; font-weight: 500 !important; font-size: 0.875rem !important; }
-      
-      #wrapwrap footer, .o_portal footer, footer { position: relative !important; z-index: 10 !important; background: var(--gp9-gray-900) !important; margin-top: 4rem !important; }
-      .o_portal_wrap { min-height: calc(100vh - 200px); padding-bottom: 2rem; }
-      
-      /* ========== CHATBOT GP9 STYLES ========== */
-      .gp9-chat-widget {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        z-index: 9999;
-        font-family: var(--gp9-font);
-      }
-      
-      .gp9-chat-btn {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--gp9-primary), var(--gp9-primary-light));
-        border: none;
-        cursor: pointer;
-        box-shadow: 0 4px 20px var(--gp9-primary-glow), 0 0 0 0 rgba(99, 102, 241, 0.4);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        animation: gp9-chat-pulse 2s infinite;
-      }
-      
-      .gp9-chat-btn:hover {
-        transform: scale(1.1);
-        box-shadow: 0 6px 30px var(--gp9-primary-glow);
-      }
-      
-      .gp9-chat-btn.is-open { animation: none; }
-      
-      @keyframes gp9-chat-pulse {
-        0%, 100% { box-shadow: 0 4px 20px var(--gp9-primary-glow), 0 0 0 0 rgba(99, 102, 241, 0.4); }
-        50% { box-shadow: 0 4px 20px var(--gp9-primary-glow), 0 0 0 12px rgba(99, 102, 241, 0); }
-      }
-      
-      .gp9-chat-btn i {
-        font-size: 1.5rem;
-        color: white;
-        transition: all 0.3s ease;
-      }
-      
-      .gp9-chat-btn .fa-times { display: none; }
-      .gp9-chat-btn.is-open .fa-comment { display: none; }
-      .gp9-chat-btn.is-open .fa-times { display: block; }
-      
-      .gp9-chat-badge {
-        position: absolute;
-        top: -4px;
-        right: -4px;
-        width: 20px;
-        height: 20px;
-        background: var(--gp9-danger);
-        border-radius: 50%;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.7rem;
-        font-weight: 700;
-        color: white;
-        border: 2px solid white;
-      }
-      
-      .gp9-chat-badge.is-visible {
-        display: flex;
-        animation: gp9-bounce 0.5s ease;
-      }
-      
-      @keyframes gp9-bounce {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-      }
-      
-      .gp9-chat-panel {
-        position: absolute;
-        bottom: 76px;
-        right: 0;
-        width: 400px;
-        height: 550px;
-        background: var(--gp9-white);
-        border-radius: 20px;
-        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px) scale(0.95);
-        transform-origin: bottom right;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      
-      .gp9-chat-panel.is-open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
-      }
-      
-      .gp9-chat-header {
-        background: linear-gradient(135deg, var(--gp9-primary), var(--gp9-primary-light));
-        padding: 1rem 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-      
-      .gp9-chat-avatar {
-        width: 44px;
-        height: 44px;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .gp9-chat-avatar i { font-size: 1.25rem; color: white; }
-      
-      .gp9-chat-header-info h4 {
-        margin: 0;
-        font-size: 1rem;
-        font-weight: 600;
-        color: white;
-      }
-      
-      .gp9-chat-header-info p {
-        margin: 0;
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.8);
-        display: flex;
-        align-items: center;
-        gap: 0.35rem;
-      }
-      
-      .gp9-chat-online-dot {
-        width: 8px;
-        height: 8px;
-        background: #34d399;
-        border-radius: 50%;
-        animation: gp9-blink 1.5s infinite;
-      }
-      
-      @keyframes gp9-blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-      }
-      
-      .gp9-chat-body {
-        height: calc(100% - 76px);
-        background: var(--gp9-gray-50);
-      }
-      
-      .gp9-chat-body iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-      
-      @media (max-width: 480px) {
-        .gp9-chat-widget { bottom: 16px; right: 16px; }
-        .gp9-chat-btn { width: 56px; height: 56px; }
-        .gp9-chat-panel {
-          width: calc(100vw - 32px);
-          height: 70vh;
-          right: -8px;
-          bottom: 72px;
-        }
-      }
-      /* ========== FIN CHATBOT GP9 STYLES ========== */
+      :root{--gp9-font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--gp9-primary:#6366f1;--gp9-primary-light:#818cf8;--gp9-primary-glow:rgba(99,102,241,0.4);--gp9-success:#10b981;--gp9-success-light:#34d399;--gp9-warning:#f59e0b;--gp9-warning-light:#fbbf24;--gp9-danger:#ef4444;--gp9-danger-light:#f87171;--gp9-white:#fff;--gp9-gray-50:#f8fafc;--gp9-gray-100:#f1f5f9;--gp9-gray-200:#e2e8f0;--gp9-gray-300:#cbd5e1;--gp9-gray-400:#94a3b8;--gp9-gray-500:#64748b;--gp9-gray-600:#475569;--gp9-gray-700:#334155;--gp9-gray-800:#1e293b;--gp9-gray-900:#0f172a;--gp9-glass-bg:rgba(255,255,255,0.85);--gp9-glass-border:rgba(255,255,255,0.4);--chat-primary:#1e293b;--chat-primary-light:#334155}
+
+      /* CHAT */
+      .n8n-chat{font-family:var(--gp9-font)!important;z-index:9999!important}
+      .n8n-chat .chat-toggle,.n8n-chat .chat-window-toggle,.n8n-chat [class*="toggle"]{width:56px!important;height:56px!important;background:var(--chat-primary)!important;border:none!important;border-radius:50%!important;box-shadow:0 4px 20px rgba(30,41,59,0.4)!important;transition:all .2s!important}
+      .n8n-chat .chat-toggle:hover,.n8n-chat [class*="toggle"]:hover{transform:scale(1.05)!important;background:var(--chat-primary-light)!important}
+      .n8n-chat .chat-toggle svg,.n8n-chat [class*="toggle"] svg{width:24px!important;height:24px!important;color:#fff!important}
+      .n8n-chat .chat-window{border-radius:20px!important;box-shadow:0 20px 50px rgba(0,0,0,0.2)!important;border:none!important;overflow:hidden!important}
+      .n8n-chat .chat-header{padding:1.25rem 1.5rem!important;background:var(--chat-primary)!important}
+      .n8n-chat .chat-header h1,.n8n-chat .chat-header .chat-title{font-size:1.1rem!important;font-weight:600!important;margin:0!important;color:#fff!important}
+      .n8n-chat .chat-header p,.n8n-chat .chat-header .chat-subtitle{font-size:.8rem!important;opacity:.85!important;color:#fff!important}
+      .n8n-chat .chat-body{background:#fff!important;padding:1rem!important}
+      .n8n-chat .chat-message-from-bot .chat-message-markdown{background:var(--gp9-gray-100)!important;color:var(--gp9-gray-800)!important;border-radius:0 1rem 1rem 1rem!important;padding:.75rem 1rem!important;font-size:.875rem!important}
+      .chat-message-from-user{background:var(--chat-primary)!important;border-radius:1rem 1rem 0 1rem!important;padding:.75rem 1rem!important;max-width:85%!important;margin-left:auto!important}
+      .chat-message-from-user .chat-message-markdown,.chat-message-from-user p{color:#fff!important;font-size:.875rem!important}
+      .n8n-chat .chat-input,.n8n-chat .chat-inputs-container{border-top:1px solid var(--gp9-gray-200)!important;padding:.875rem!important;background:#fff!important}
+      .n8n-chat textarea{border:1.5px solid var(--gp9-gray-200)!important;border-radius:12px!important;padding:.625rem .875rem!important;background:var(--gp9-gray-50)!important}
+      .n8n-chat textarea:focus{border-color:var(--chat-primary)!important;box-shadow:0 0 0 3px rgba(30,41,59,0.1)!important;outline:none!important;background:#fff!important}
+      .n8n-chat .chat-input button{background:var(--chat-primary)!important;border:none!important;border-radius:10px!important}
+      .n8n-chat .chat-input button:hover{background:var(--chat-primary-light)!important}
+      .n8n-chat .chat-footer{font-size:.65rem!important;color:var(--gp9-gray-400)!important;background:var(--gp9-gray-50)!important}
+
+      /* PORTAL BASE */
+      #wrapwrap,.o_portal{background:linear-gradient(135deg,#f0f4ff 0%,#faf5ff 50%,#f0fdfa 100%)!important;min-height:100vh}
+      .o_portal_wrap{position:relative;min-height:calc(100vh - 200px);padding-bottom:2rem}
+      .o_portal_wrap::before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(99,102,241,0.04) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;z-index:0}
+      .o_portal_wrap&gt;*{position:relative;z-index:1}
+      @media(min-width:992px){.o_portal_wrap&gt;.container&gt;.row&gt;.col-lg-6:first-child,.o_portal_wrap .col-lg-6:has(.o_portal_my_home){flex:0 0 73%!important;max-width:73%!important}#o_my_sidebar{flex:0 0 25%!important;max-width:25%!important}}
+      @media(max-width:991.98px){.o_portal_wrap&gt;.container&gt;.row&gt;.col-lg-6:first-child,.o_portal_wrap .col-lg-6:has(.o_portal_my_home),#o_my_sidebar{flex:0 0 100%!important;max-width:100%!important;width:100%!important}#o_my_sidebar{margin-top:2rem}}
+
+      /* HEADER */
+      .gp9-portal-section{font-family:var(--gp9-font)}.gp9-portal-section *{font-family:inherit}
+      .gp9-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+      .gp9-header-left{display:flex;align-items:center;gap:1rem}
+      .gp9-header-right{display:flex;align-items:center;gap:.75rem}
+      .gp9-title{font-size:2rem;font-weight:300;color:var(--gp9-gray-800);letter-spacing:-.025em;margin:0}.gp9-title span{font-weight:600}
+      .gp9-btn-ver-todos{display:inline-flex;align-items:center;gap:.5rem;padding:.625rem 1.25rem;font-size:.875rem;font-weight:500;color:var(--gp9-gray-600);background:var(--gp9-white);border:1px solid var(--gp9-gray-200);border-radius:100px;text-decoration:none;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+      .gp9-btn-ver-todos:hover{color:var(--gp9-primary);border-color:var(--gp9-primary);background:rgba(99,102,241,0.05);transform:translateX(4px);text-decoration:none}
+      .gp9-btn-ver-todos i{font-size:.75rem;transition:transform .2s}.gp9-btn-ver-todos:hover i{transform:translateX(2px)}
+
+      /* NOTIFICACIONES */
+      .gp9-notifications-wrapper{position:relative}
+      .gp9-btn-notifications{position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--gp9-white);border:1px solid var(--gp9-gray-200);border-radius:12px;cursor:pointer;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+      .gp9-btn-notifications:hover{border-color:var(--gp9-primary);background:rgba(99,102,241,0.05);transform:translateY(-2px)}
+      .gp9-btn-notifications.is-active{border-color:var(--gp9-primary);background:rgba(99,102,241,0.1)}
+      .gp9-btn-notifications i{font-size:1.1rem;color:var(--gp9-gray-600);transition:color .2s}
+      .gp9-btn-notifications:hover i,.gp9-btn-notifications.is-active i{color:var(--gp9-primary)}
+      .gp9-notif-badge{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 6px;background:linear-gradient(135deg,var(--gp9-danger),var(--gp9-danger-light));color:var(--gp9-white);font-size:.7rem;font-weight:700;border-radius:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(239,68,68,0.3);animation:gp9-pulse 2s infinite}
+      @keyframes gp9-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+      .gp9-notifications-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:400px;max-height:520px;background:var(--gp9-white);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transform:translateY(-10px);transition:all .25s cubic-bezier(0.4,0,0.2,1);z-index:1000;overflow:hidden}
+      .gp9-notifications-dropdown.is-open{opacity:1;visibility:visible;transform:translateY(0)}
+      .gp9-notif-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid var(--gp9-gray-100);background:var(--gp9-gray-50)}
+      .gp9-notif-header h4{margin:0;font-size:.9rem;font-weight:600;color:var(--gp9-gray-800);display:flex;align-items:center;gap:.5rem}.gp9-notif-header h4 i{color:var(--gp9-primary)}
+      .gp9-btn-mark-all{font-size:.75rem;color:var(--gp9-primary);background:none;border:none;cursor:pointer;padding:.25rem .5rem;border-radius:6px;font-weight:500;transition:background .2s}.gp9-btn-mark-all:hover{background:rgba(99,102,241,0.1)}
+      .gp9-notif-tabs{display:flex;border-bottom:1px solid var(--gp9-gray-100);padding:0 .5rem;background:var(--gp9-white)}
+      .gp9-notif-tab{flex:1;padding:.75rem 1rem;font-size:.8rem;font-weight:500;color:var(--gp9-gray-500);background:none;border:none;cursor:pointer;position:relative;transition:color .2s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+      .gp9-notif-tab:hover{color:var(--gp9-gray-700)}.gp9-notif-tab.is-active{color:var(--gp9-primary)}
+      .gp9-notif-tab.is-active::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--gp9-primary);border-radius:2px 2px 0 0}
+      .gp9-notif-tab-badge{min-width:18px;height:18px;padding:0 5px;background:var(--gp9-gray-200);color:var(--gp9-gray-600);font-size:.65rem;font-weight:600;border-radius:100px;display:inline-flex;align-items:center;justify-content:center}
+      .gp9-notif-tab.is-active .gp9-notif-tab-badge{background:rgba(99,102,241,0.15);color:var(--gp9-primary)}
+      .gp9-notif-panel{display:none;max-height:350px;overflow-y:auto;padding:.5rem}.gp9-notif-panel.is-active{display:block}
+      .gp9-notif-panel::-webkit-scrollbar{width:5px}.gp9-notif-panel::-webkit-scrollbar-thumb{background:var(--gp9-gray-200);border-radius:100px}
+      .gp9-notif-section-title{padding:.5rem .75rem;font-size:.7rem;font-weight:600;color:var(--gp9-gray-400);text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:.5rem}
+      .gp9-notif-item{display:flex;gap:.75rem;padding:.75rem;border-radius:10px;text-decoration:none;transition:background .2s;margin-bottom:.25rem;position:relative}
+      .gp9-notif-item:hover{background:var(--gp9-gray-50);text-decoration:none}
+      .gp9-notif-item.is-unread{background:rgba(99,102,241,0.04)}.gp9-notif-item.is-unread:hover{background:rgba(99,102,241,0.08)}
+      .gp9-notif-icon{flex-shrink:0;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+      .gp9-notif-icon--chat{background:rgba(99,102,241,0.1);color:var(--gp9-primary)}
+      .gp9-notif-icon--invoice{background:rgba(16,185,129,0.1);color:var(--gp9-success)}
+      .gp9-notif-icon--quote{background:rgba(139,92,246,0.1);color:#8b5cf6}
+      .gp9-notif-content{flex:1;min-width:0}
+      .gp9-notif-title{font-size:.8rem;font-weight:500;color:var(--gp9-gray-800);margin-bottom:.15rem;line-height:1.3}.gp9-notif-item.is-unread .gp9-notif-title{font-weight:600}
+      .gp9-notif-project{font-size:.7rem;color:var(--gp9-primary);font-weight:500;margin-bottom:.15rem;display:flex;align-items:center;gap:.3rem}
+      .gp9-notif-desc{font-size:.75rem;color:var(--gp9-gray-500);line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+      .gp9-notif-dot{position:absolute;top:50%;right:.75rem;transform:translateY(-50%);width:7px;height:7px;background:var(--gp9-primary);border-radius:50%}
+      .gp9-notif-empty{padding:2.5rem 1.5rem;text-align:center}.gp9-notif-empty i{font-size:2rem;color:var(--gp9-gray-300);margin-bottom:.75rem}.gp9-notif-empty p{margin:0;color:var(--gp9-gray-500);font-size:.85rem}
+      .gp9-notif-footer{padding:.75rem 1.25rem;border-top:1px solid var(--gp9-gray-100);text-align:center;background:var(--gp9-gray-50)}
+      .gp9-btn-view-all{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:500;color:var(--gp9-primary);text-decoration:none;padding:.4rem .8rem;border-radius:8px;transition:background .2s}.gp9-btn-view-all:hover{background:rgba(99,102,241,0.1);text-decoration:none}
+
+      /* ========== GRID - CSS COLUMNS (MASONRY REAL) ========== */
+      .gp9-projects-grid{column-count:3;column-gap:1.25rem}
+      @media(max-width:1199.98px){.gp9-projects-grid{column-count:2;column-gap:1rem}}
+      @media(max-width:767.98px){.gp9-projects-grid{column-count:1}.gp9-title{font-size:1.5rem}.gp9-header{flex-direction:column;align-items:flex-start;gap:.75rem}.gp9-header-right{width:100%;justify-content:space-between}.gp9-notifications-dropdown{width:calc(100vw - 2rem);right:-1rem}}
+
+      /* CARDS */
+      .gp9-card{position:relative;background:var(--gp9-glass-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;border:1px solid var(--gp9-glass-border);overflow:hidden;transition:all .3s cubic-bezier(0.4,0,0.2,1);break-inside:avoid;margin-bottom:1.25rem;display:inline-block;width:100%;animation:gp9-fade-in .5s ease forwards;opacity:0}
+      .gp9-card:nth-child(1){animation-delay:.05s}.gp9-card:nth-child(2){animation-delay:.1s}.gp9-card:nth-child(3){animation-delay:.15s}.gp9-card:nth-child(4){animation-delay:.2s}.gp9-card:nth-child(5){animation-delay:.25s}.gp9-card:nth-child(6){animation-delay:.3s}
+      @keyframes gp9-fade-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+      .gp9-card--success{box-shadow:0 4px 20px rgba(16,185,129,0.1)}.gp9-card--success:hover{box-shadow:0 12px 36px rgba(16,185,129,0.18);transform:translateY(-4px)}
+      .gp9-card--warning{box-shadow:0 4px 20px rgba(245,158,11,0.1)}.gp9-card--warning:hover{box-shadow:0 12px 36px rgba(245,158,11,0.18);transform:translateY(-4px)}
+      .gp9-card--danger{box-shadow:0 4px 20px rgba(239,68,68,0.1)}.gp9-card--danger:hover{box-shadow:0 12px 36px rgba(239,68,68,0.18);transform:translateY(-4px)}
+      .gp9-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+      .gp9-card--success::before{background:linear-gradient(180deg,var(--gp9-success),var(--gp9-success-light))}
+      .gp9-card--warning::before{background:linear-gradient(180deg,var(--gp9-warning),var(--gp9-warning-light))}
+      .gp9-card--danger::before{background:linear-gradient(180deg,var(--gp9-danger),var(--gp9-danger-light))}
+      .gp9-card-body{padding:1.5rem;padding-left:1.75rem}
+      .gp9-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;margin-bottom:.5rem}
+      .gp9-card-title{font-size:1.125rem;font-weight:600;color:var(--gp9-gray-800);margin:0;line-height:1.3}
+      .gp9-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .7rem;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.02em;border-radius:100px;white-space:nowrap}
+      .gp9-badge--success{color:var(--gp9-success);background:rgba(16,185,129,0.12)}
+      .gp9-badge--warning{color:#b45309;background:rgba(245,158,11,0.12)}
+      .gp9-badge--danger{color:var(--gp9-danger);background:rgba(239,68,68,0.12)}
+      .gp9-badge i{font-size:.55rem}
+      .gp9-stage{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--gp9-gray-500);margin-bottom:1rem}.gp9-stage i{font-size:.7rem;opacity:.7}
+      .gp9-info-row{display:flex;align-items:center;gap:1.5rem;margin-bottom:1rem;padding:.75rem 1rem;background:var(--gp9-gray-50);border-radius:10px;flex-wrap:wrap}
+      .gp9-info-item-inline{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--gp9-gray-600)}.gp9-info-item-inline i{color:var(--gp9-gray-400);font-size:.75rem;width:1rem}.gp9-info-item-inline strong{color:var(--gp9-gray-700);font-weight:600}
+      .gp9-progress-section{margin-bottom:1.25rem}
+      .gp9-progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+      .gp9-progress-label{font-size:.7rem;font-weight:600;color:var(--gp9-gray-400);text-transform:uppercase;letter-spacing:.05em}
+      .gp9-progress-value{font-size:.875rem;font-weight:700;color:var(--gp9-gray-700)}
+      .gp9-progress-track{height:6px;background:var(--gp9-gray-100);border-radius:100px;overflow:hidden}
+      .gp9-progress-bar{height:100%;border-radius:100px;transition:width 1s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden}
+      .gp9-progress-bar::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:gp9-shimmer 2s infinite}
+      @keyframes gp9-shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+      .gp9-progress-bar--success{background:linear-gradient(90deg,var(--gp9-success),var(--gp9-success-light))}
+      .gp9-progress-bar--warning{background:linear-gradient(90deg,var(--gp9-warning),var(--gp9-warning-light))}
+      .gp9-progress-bar--danger{background:linear-gradient(90deg,var(--gp9-danger),var(--gp9-danger-light))}
+      .gp9-actions{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.75rem}
+      .gp9-btn-action{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.6rem .5rem;font-size:.75rem;font-weight:500;color:var(--gp9-gray-600);background:var(--gp9-white);border:1px solid var(--gp9-gray-200);border-radius:8px;text-decoration:none;transition:all .2s}
+      .gp9-btn-action:hover{color:var(--gp9-primary);border-color:var(--gp9-primary);background:rgba(99,102,241,0.05);text-decoration:none}.gp9-btn-action i{font-size:.75rem;opacity:.7}
+      .gp9-actions-secondary{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem}
+      .gp9-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;padding:.5rem .4rem;font-size:.7rem;font-weight:500;color:var(--gp9-gray-500);background:transparent;border:1px dashed var(--gp9-gray-200);border-radius:8px;text-decoration:none;transition:all .2s}
+      .gp9-btn-secondary:hover{color:var(--gp9-primary);border-color:var(--gp9-primary);border-style:solid;background:rgba(99,102,241,0.03);text-decoration:none}.gp9-btn-secondary i{font-size:.7rem;opacity:.6}
+      .gp9-btn-toggle{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.7rem 1rem;font-size:.8rem;font-weight:500;color:var(--gp9-gray-500);background:var(--gp9-gray-50);border:none;border-radius:10px;cursor:pointer;transition:all .2s}
+      .gp9-btn-toggle:hover{color:var(--gp9-gray-700);background:var(--gp9-gray-100)}
+      .gp9-btn-toggle.is-active{color:var(--gp9-primary);background:rgba(99,102,241,0.1)}
+      .gp9-btn-toggle i{font-size:.6rem;transition:transform .3s}.gp9-btn-toggle.is-active i{transform:rotate(180deg)}
+      .gp9-details{display:none;margin-top:1rem}
+      .gp9-details.is-open{display:block}
+      .gp9-details-content{padding-top:1rem;border-top:1px solid var(--gp9-gray-100)}
+      .gp9-status-msg{display:flex;align-items:flex-start;gap:.75rem;padding:.875rem 1rem;border-radius:10px;margin-bottom:1rem;font-size:.8rem;line-height:1.5}
+      .gp9-status-msg--success{background:rgba(16,185,129,0.08);color:var(--gp9-gray-700)}
+      .gp9-status-msg--warning{background:rgba(245,158,11,0.08);color:var(--gp9-gray-700)}
+      .gp9-status-msg--danger{background:rgba(239,68,68,0.08);color:var(--gp9-gray-700)}
+      .gp9-status-msg i{font-size:1rem;margin-top:.1rem}
+      .gp9-status-msg--success i{color:var(--gp9-success)}.gp9-status-msg--warning i{color:var(--gp9-warning)}.gp9-status-msg--danger i{color:var(--gp9-danger)}
+      .gp9-info-item{display:flex;align-items:center;gap:.625rem;font-size:.8rem;color:var(--gp9-gray-600);margin-bottom:.5rem}.gp9-info-item i{width:1rem;color:var(--gp9-gray-400);font-size:.75rem}
+      .gp9-team{margin-bottom:1rem}
+      .gp9-team-label{display:flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:600;color:var(--gp9-gray-400);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+      .gp9-team-list{display:flex;flex-wrap:wrap;gap:.4rem}
+      .gp9-team-member{display:inline-flex;align-items:center;padding:.3rem .65rem;font-size:.7rem;font-weight:500;color:var(--gp9-gray-600);background:var(--gp9-white);border:1px solid var(--gp9-gray-200);border-radius:100px}
+      .gp9-notes{padding:.75rem 1rem;background:var(--gp9-gray-50);border-radius:10px;border-left:3px solid var(--gp9-primary-light);font-size:.8rem;color:var(--gp9-gray-600);line-height:1.6;margin-bottom:1rem}
+      .gp9-btn-project{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.25rem;font-size:.85rem;font-weight:600;color:var(--gp9-white);background:var(--gp9-primary);border:none;border-radius:10px;text-decoration:none;transition:all .2s;box-shadow:0 4px 12px var(--gp9-primary-glow)}
+      .gp9-btn-project:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--gp9-primary-glow);color:var(--gp9-white);text-decoration:none}.gp9-btn-project i{font-size:.7rem;transition:transform .2s}.gp9-btn-project:hover i{transform:translateX(4px)}
+
+      /* ODOO OVERRIDES */
+      .o_portal .list-group-item[href*="/my/tasks"],.o_portal .list-group-item[href*="/my/task"],.o_portal .list-group-item[href*="/my/timesheets"],.o_portal .list-group-item[href*="/my/timesheet"],.o_portal .list-group-item[href*="/my/signatures"],.o_portal .list-group-item[href*="/my/signature"],.o_portal .list-group-item[href*="/my/sign"]{display:none!important}
+      .o_portal_my_home h3{font-family:var(--gp9-font)!important;font-size:1.5rem!important;font-weight:300!important;color:var(--gp9-gray-800)!important;margin-top:3rem!important;margin-bottom:1.5rem!important}.o_portal_my_home h3 strong,.o_portal_my_home h3 b{font-weight:600!important}
+      .o_portal_docs.list-group,.o_portal .list-group{font-family:var(--gp9-font)!important;background:var(--gp9-glass-bg)!important;backdrop-filter:blur(10px)!important;border-radius:16px!important;box-shadow:0 4px 24px rgba(0,0,0,0.06)!important;border:1px solid var(--gp9-glass-border)!important;overflow:hidden!important;padding:.5rem!important}
+      .o_portal_docs .list-group-item,.o_portal .list-group-item{font-family:var(--gp9-font)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;border:none!important;padding:1rem 1.25rem!important;margin:.25rem 0!important;border-radius:10px!important;background:transparent!important;color:var(--gp9-gray-700)!important;font-weight:500!important;font-size:.9375rem!important;transition:all .2s!important;text-decoration:none!important}
+      .o_portal .list-group-item:hover{background:var(--gp9-white)!important;box-shadow:0 2px 8px rgba(0,0,0,0.04)!important;transform:translateX(4px)!important;color:var(--gp9-primary)!important}
+      .o_portal .list-group-item .badge{background:linear-gradient(135deg,var(--gp9-gray-700),var(--gp9-gray-800))!important;color:var(--gp9-white)!important;border-radius:100px!important;padding:.375rem .75rem!important;font-weight:600!important;font-size:.75rem!important}
+      #o_my_sidebar .o_portal_my_details,.o_portal_my_details{font-family:var(--gp9-font)!important;background:var(--gp9-glass-bg)!important;backdrop-filter:blur(10px)!important;border-radius:16px!important;box-shadow:0 4px 24px rgba(0,0,0,0.06)!important;padding:1.5rem!important;border:1px solid var(--gp9-glass-border)!important;margin-bottom:1.5rem!important}
+      #o_my_sidebar .o_portal_my_details h4,.o_portal_my_details h4{font-family:var(--gp9-font)!important;font-size:.7rem!important;font-weight:600!important;color:var(--gp9-gray-500)!important;text-transform:uppercase!important;letter-spacing:.1em!important;margin-bottom:1rem!important;padding-bottom:.75rem!important;border-bottom:1px solid var(--gp9-gray-100)!important}
+      .o_portal_my_details address{font-style:normal!important;color:var(--gp9-gray-600)!important;line-height:1.8!important;font-size:.875rem!important}.o_portal_my_details hr{display:none!important}
+      #o_my_sidebar .o_portal_my_security,.o_portal_my_security{font-family:var(--gp9-font)!important;background:var(--gp9-glass-bg)!important;backdrop-filter:blur(10px)!important;border-radius:16px!important;box-shadow:0 4px 24px rgba(0,0,0,0.06)!important;padding:1.5rem!important;border:1px solid var(--gp9-glass-border)!important}
+      .o_portal_my_security h4{font-family:var(--gp9-font)!important;font-size:.7rem!important;font-weight:600!important;color:var(--gp9-gray-500)!important;text-transform:uppercase!important;letter-spacing:.1em!important;margin-bottom:.75rem!important;padding-bottom:.5rem!important;border-bottom:1px solid var(--gp9-gray-100)!important}
+      .o_portal_my_security hr{display:none!important}.o_portal_my_security a{color:var(--gp9-primary)!important;text-decoration:none!important;font-weight:500!important;font-size:.875rem!important}
+      #wrapwrap footer,.o_portal footer,footer{position:relative!important;z-index:10!important;background:var(--gp9-gray-900)!important;margin-top:4rem!important}
     </style>
 
-    <!-- Obtener datos -->
+    <!-- Datos -->
     <t t-set="partner_id" t-value="request.env.user.partner_id.id"/>
     <t t-set="projects" t-value="request.env['project.project'].sudo().search([('partner_id','=', partner_id), ('active','=', True)], limit=6, order='create_date desc')"/>
     <t t-set="projects_list" t-value="list(projects)"/>
     <t t-set="project_ids" t-value="[p.id for p in projects_list]"/>
-    
-    <!-- Notificaciones de Proyectos -->
     <t t-set="chat_messages" t-value="request.env['x_portal_message'].sudo().search([('x_project_id', 'in', project_ids), ('x_is_from_staff', '=', True)], limit=15, order='create_date desc')"/>
-    
-    <!-- Notificaciones Administrativas -->
     <t t-set="invoices" t-value="request.env['account.move'].sudo().search([('partner_id', '=', partner_id), ('move_type', 'in', ['out_invoice', 'out_refund']), ('state', '=', 'posted')], limit=10, order='invoice_date desc')"/>
-    <t t-set="sale_orders" t-value="request.env['sale.order'].sudo().search([('partner_id', '=', partner_id), ('state', 'in', ['sale', 'done'])], limit=10, order='date_order desc')"/>
     <t t-set="quotations" t-value="request.env['sale.order'].sudo().search([('partner_id', '=', partner_id), ('state', 'in', ['sent', 'draft'])], limit=10, order='date_order desc')"/>
-    
-    <!-- Obtener notificaciones leídas del cliente -->
-    <t t-set="read_notifs_model" t-value="request.env.get('x_portal_notification_read')"/>
-    <t t-set="read_notifs" t-value="read_notifs_model.sudo().search([('x_partner_id', '=', partner_id)]) if read_notifs_model else []"/>
-    <t t-set="read_keys" t-value="[r.x_notification_key for r in read_notifs] if read_notifs else []"/>
-    
-    <!-- Contar no leídas -->
-    <t t-set="unread_project_count" t-value="len([m for m in chat_messages if ('msg_' + str(m.id)) not in read_keys])"/>
-    <t t-set="unread_admin_count" t-value="len([i for i in invoices if ('inv_' + str(i.id)) not in read_keys]) + len([o for o in sale_orders if ('order_' + str(o.id)) not in read_keys]) + len([q for q in quotations if ('quote_' + str(q.id)) not in read_keys])"/>
-    <t t-set="total_unread" t-value="unread_project_count + unread_admin_count"/>
+    <t t-set="total_unread" t-value="len(chat_messages) + len(invoices) + len(quotations)"/>
 
     <t t-if="projects_list">
       <div class="gp9-portal-section">
-        
-        <!-- Header -->
         <div class="gp9-header">
-          <div class="gp9-header-left">
-            <h2 class="gp9-title">Mis <span>Proyectos</span></h2>
-          </div>
-          
+          <div class="gp9-header-left"><h2 class="gp9-title"><span>Mis Proyectos</span></h2></div>
           <div class="gp9-header-right">
-            <!-- Botón de Notificaciones -->
             <div class="gp9-notifications-wrapper">
               <button type="button" class="gp9-btn-notifications" id="gp9NotifBtn">
                 <i class="fa fa-bell-o"/>
-                <t t-if="total_unread and total_unread &gt; 0">
-                  <span class="gp9-notif-badge"><t t-esc="total_unread if total_unread &lt; 10 else '9+'"/></span>
-                </t>
+                <t t-if="total_unread and total_unread &gt; 0"><span class="gp9-notif-badge"><t t-esc="total_unread if total_unread &lt; 10 else '9+'"/></span></t>
               </button>
-              
-              <!-- Dropdown -->
               <div class="gp9-notifications-dropdown" id="gp9NotifDropdown">
-                <div class="gp9-notif-header">
-                  <h4>
-                    <i class="fa fa-bell"/>
-                    Notificaciones
-                  </h4>
-                  <t t-if="total_unread and total_unread &gt; 0">
-                    <button type="button" class="gp9-btn-mark-all" id="gp9MarkAllRead">
-                      <i class="fa fa-check-double"/> Marcar todo leído
-                    </button>
-                  </t>
-                </div>
-                
-                <!-- Tabs -->
+                <div class="gp9-notif-header"><h4><i class="fa fa-bell"/>Notificaciones</h4><button type="button" class="gp9-btn-mark-all" id="gp9MarkAllRead">Marcar leído</button></div>
                 <div class="gp9-notif-tabs">
-                  <button type="button" class="gp9-notif-tab is-active" data-tab="projects">
-                    <i class="fa fa-folder-open-o"/>
-                    Proyectos
-                    <t t-if="unread_project_count and unread_project_count &gt; 0">
-                      <span class="gp9-notif-tab-badge"><t t-esc="unread_project_count"/></span>
-                    </t>
-                  </button>
-                  <button type="button" class="gp9-notif-tab" data-tab="admin">
-                    <i class="fa fa-file-text-o"/>
-                    Administrativo
-                    <t t-if="unread_admin_count and unread_admin_count &gt; 0">
-                      <span class="gp9-notif-tab-badge"><t t-esc="unread_admin_count"/></span>
-                    </t>
-                  </button>
+                  <button type="button" class="gp9-notif-tab is-active" data-tab="projects"><i class="fa fa-folder-open-o"/>Proyectos</button>
+                  <button type="button" class="gp9-notif-tab" data-tab="admin"><i class="fa fa-file-text-o"/>Admin</button>
                 </div>
-                
-                <!-- Panel Proyectos -->
                 <div class="gp9-notif-panel is-active" id="gp9PanelProjects">
                   <t t-if="chat_messages">
-                    <div class="gp9-notif-section-title">
-                      <i class="fa fa-comments"/>
-                      Mensajes del equipo
-                    </div>
+                    <div class="gp9-notif-section-title"><i class="fa fa-comments"/>Mensajes</div>
                     <t t-foreach="chat_messages" t-as="msg">
-                      <t t-set="msg_key" t-value="'msg_' + str(msg.id)"/>
-                      <t t-set="is_read" t-value="msg_key in read_keys"/>
-                      <a t-attf-href="/my/project/#{msg.x_project_id.id}?mark_read=#{msg_key}#chat" t-attf-class="gp9-notif-item #{'' if is_read else 'is-unread'}" t-att-data-notif-key="msg_key">
-                        <div class="gp9-notif-icon gp9-notif-icon--chat">
-                          <i class="fa fa-comment"/>
-                        </div>
+                      <a t-attf-href="/my/project/#{msg.x_project_id.id}#chat" class="gp9-notif-item is-unread">
+                        <div class="gp9-notif-icon gp9-notif-icon--chat"><i class="fa fa-comment"/></div>
                         <div class="gp9-notif-content">
-                          <t t-if="msg.x_project_id">
-                            <div class="gp9-notif-project">
-                              <i class="fa fa-folder-o"/>
-                              <t t-esc="msg.x_project_id.name"/>
-                            </div>
-                          </t>
-                          <div class="gp9-notif-title">Nuevo mensaje del equipo</div>
-                          <t t-if="msg.x_message">
-                            <div class="gp9-notif-desc"><t t-esc="msg.x_message[:60] if len(msg.x_message or '') &gt; 60 else msg.x_message"/></div>
-                          </t>
-                          <div class="gp9-notif-meta">
-                            <i class="fa fa-clock-o"/>
-                            <span t-if="msg.create_date" t-field="msg.create_date" t-options="{&quot;widget&quot;: &quot;datetime&quot;, &quot;format&quot;: &quot;dd/MM/yyyy HH:mm&quot;}"/>
-                            <t t-if="msg.x_sender_name">
-                              <span>· <t t-esc="msg.x_sender_name"/></span>
-                            </t>
-                          </div>
+                          <t t-if="msg.x_project_id"><div class="gp9-notif-project"><t t-esc="msg.x_project_id.name"/></div></t>
+                          <div class="gp9-notif-title">Nuevo mensaje</div>
                         </div>
-                        <t t-if="not is_read">
-                          <span class="gp9-notif-dot"/>
-                        </t>
+                        <span class="gp9-notif-dot"/>
                       </a>
                     </t>
                   </t>
-                  <t t-else="">
-                    <div class="gp9-notif-empty">
-                      <i class="fa fa-comments-o"/>
-                      <p>No hay mensajes de proyectos</p>
-                      <p class="gp9-notif-empty-sub">Aquí aparecerán las actualizaciones del equipo</p>
-                    </div>
-                  </t>
+                  <t t-else=""><div class="gp9-notif-empty"><i class="fa fa-comments-o"/><p>Sin mensajes</p></div></t>
                 </div>
-                
-                <!-- Panel Administrativo -->
                 <div class="gp9-notif-panel" id="gp9PanelAdmin">
-                  <t t-if="invoices or sale_orders or quotations">
-                    
-                    <!-- Facturas -->
-                    <t t-if="invoices">
-                      <div class="gp9-notif-section-title">
-                        <i class="fa fa-file-text"/>
-                        Facturas
-                      </div>
-                      <t t-foreach="invoices[:5]" t-as="inv">
-                        <t t-set="inv_key" t-value="'inv_' + str(inv.id)"/>
-                        <t t-set="is_read" t-value="inv_key in read_keys"/>
-                        <a t-attf-href="/my/invoices/#{inv.id}?mark_read=#{inv_key}" t-attf-class="gp9-notif-item #{'' if is_read else 'is-unread'}" t-att-data-notif-key="inv_key">
-                          <div class="gp9-notif-icon gp9-notif-icon--invoice">
-                            <i class="fa fa-file-text-o"/>
-                          </div>
-                          <div class="gp9-notif-content">
-                            <div class="gp9-notif-title">Factura: <t t-esc="inv.name or 'Borrador'"/></div>
-                            <div class="gp9-notif-desc">Importe: <t t-esc="'%.2f' % inv.amount_total"/> €</div>
-                            <div class="gp9-notif-meta">
-                              <i class="fa fa-clock-o"/>
-                              <span t-if="inv.invoice_date" t-field="inv.invoice_date" t-options="{&quot;widget&quot;: &quot;date&quot;, &quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
-                            </div>
-                          </div>
-                          <t t-if="not is_read">
-                            <span class="gp9-notif-dot"/>
-                          </t>
-                        </a>
+                  <t t-if="invoices or quotations">
+                    <t t-if="invoices"><div class="gp9-notif-section-title"><i class="fa fa-file-text"/>Facturas</div>
+                      <t t-foreach="invoices[:3]" t-as="inv">
+                        <a t-attf-href="/my/invoices/#{inv.id}" class="gp9-notif-item"><div class="gp9-notif-icon gp9-notif-icon--invoice"><i class="fa fa-file-text-o"/></div><div class="gp9-notif-content"><div class="gp9-notif-title"><t t-esc="inv.name or 'Factura'"/></div></div></a>
                       </t>
                     </t>
-                    
-                    <!-- Pedidos -->
-                    <t t-if="sale_orders">
-                      <div class="gp9-notif-section-title">
-                        <i class="fa fa-shopping-cart"/>
-                        Pedidos confirmados
-                      </div>
-                      <t t-foreach="sale_orders[:5]" t-as="order">
-                        <t t-set="order_key" t-value="'order_' + str(order.id)"/>
-                        <t t-set="is_read" t-value="order_key in read_keys"/>
-                        <a t-attf-href="/my/orders/#{order.id}?mark_read=#{order_key}" t-attf-class="gp9-notif-item #{'' if is_read else 'is-unread'}" t-att-data-notif-key="order_key">
-                          <div class="gp9-notif-icon gp9-notif-icon--order">
-                            <i class="fa fa-shopping-cart"/>
-                          </div>
-                          <div class="gp9-notif-content">
-                            <div class="gp9-notif-title">Pedido: <t t-esc="order.name"/></div>
-                            <div class="gp9-notif-desc">Total: <t t-esc="'%.2f' % order.amount_total"/> €</div>
-                            <div class="gp9-notif-meta">
-                              <i class="fa fa-clock-o"/>
-                              <span t-if="order.date_order" t-field="order.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;, &quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
-                            </div>
-                          </div>
-                          <t t-if="not is_read">
-                            <span class="gp9-notif-dot"/>
-                          </t>
-                        </a>
-                      </t>
-                    </t>
-                    
-                    <!-- Presupuestos -->
-                    <t t-if="quotations">
-                      <div class="gp9-notif-section-title">
-                        <i class="fa fa-file-o"/>
-                        Presupuestos pendientes
-                      </div>
-                      <t t-foreach="quotations[:5]" t-as="quote">
-                        <t t-set="quote_key" t-value="'quote_' + str(quote.id)"/>
-                        <t t-set="is_read" t-value="quote_key in read_keys"/>
-                        <a t-attf-href="/my/orders/#{quote.id}?mark_read=#{quote_key}" t-attf-class="gp9-notif-item #{'' if is_read else 'is-unread'}" t-att-data-notif-key="quote_key">
-                          <div class="gp9-notif-icon gp9-notif-icon--quote">
-                            <i class="fa fa-file-o"/>
-                          </div>
-                          <div class="gp9-notif-content">
-                            <div class="gp9-notif-title">Presupuesto: <t t-esc="quote.name"/></div>
-                            <div class="gp9-notif-desc">Total: <t t-esc="'%.2f' % quote.amount_total"/> €</div>
-                            <div class="gp9-notif-meta">
-                              <i class="fa fa-clock-o"/>
-                              <span t-if="quote.date_order" t-field="quote.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;, &quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
-                              <span class="badge" style="background: #fef3c7; color: #92400e; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; margin-left: 4px;">Pendiente</span>
-                            </div>
-                          </div>
-                          <t t-if="not is_read">
-                            <span class="gp9-notif-dot"/>
-                          </t>
-                        </a>
-                      </t>
-                    </t>
-                    
                   </t>
-                  <t t-else="">
-                    <div class="gp9-notif-empty">
-                      <i class="fa fa-file-text-o"/>
-                      <p>No hay documentos administrativos</p>
-                      <p class="gp9-notif-empty-sub">Aquí aparecerán facturas, pedidos y presupuestos</p>
-                    </div>
-                  </t>
+                  <t t-else=""><div class="gp9-notif-empty"><i class="fa fa-file-text-o"/><p>Sin documentos</p></div></t>
                 </div>
-                
-                <div class="gp9-notif-footer">
-                  <a href="/my/projects" class="gp9-btn-view-all">
-                    Ver todos mis proyectos
-                    <i class="fa fa-arrow-right"/>
-                  </a>
-                </div>
+                <div class="gp9-notif-footer"><a href="/my/projects" class="gp9-btn-view-all">Ver todos<i class="fa fa-arrow-right"/></a></div>
               </div>
             </div>
-            
-            <a href="/my/projects" class="gp9-btn-ver-todos">
-              Ver todos <i class="fa fa-arrow-right"/>
-            </a>
+            <a href="/my/projects" class="gp9-btn-ver-todos">Ver todos <i class="fa fa-arrow-right"/></a>
           </div>
         </div>
 
-        <!-- GRID DE PROYECTOS -->
         <div class="gp9-projects-grid">
           <t t-foreach="projects_list" t-as="p">
             <t t-set="prog" t-value="int(p.x_progress or 0)"/>
             <t t-set="risk" t-value="p.x_risk_level or 'low'"/>
             <t t-set="uid" t-value="p.id"/>
             <t t-set="risk_class" t-value="'success' if risk == 'low' else ('warning' if risk == 'medium' else 'danger')"/>
-            <t t-set="next_delivery" t-value="p.date or False"/>
-            
             <div t-attf-class="gp9-card gp9-card--#{risk_class}">
               <div class="gp9-card-body">
-                
                 <div class="gp9-card-header">
                   <h3 class="gp9-card-title"><t t-esc="p.name"/></h3>
-                  <t t-if="risk == 'low'">
-                    <span class="gp9-badge gp9-badge--success"><i class="fa fa-check"/>OK</span>
-                  </t>
-                  <t t-elif="risk == 'medium'">
-                    <span class="gp9-badge gp9-badge--warning"><i class="fa fa-exclamation"/>Atención</span>
-                  </t>
-                  <t t-else="">
-                    <span class="gp9-badge gp9-badge--danger"><i class="fa fa-times"/>Riesgo</span>
-                  </t>
+                  <t t-if="risk == 'low'"><span class="gp9-badge gp9-badge--success"><i class="fa fa-check"/>OK</span></t>
+                  <t t-elif="risk == 'medium'"><span class="gp9-badge gp9-badge--warning"><i class="fa fa-exclamation"/>Atención</span></t>
+                  <t t-else=""><span class="gp9-badge gp9-badge--danger"><i class="fa fa-times"/>Riesgo</span></t>
                 </div>
-                
-                <div class="gp9-stage">
-                  <i class="fa fa-bookmark-o"/>
-                  <span><t t-esc="p.x_portal_stage_name or 'Sin etapa'"/></span>
-                </div>
-                
-                <div class="gp9-info-row">
-                  <div class="gp9-info-item-inline">
-                    <i class="fa fa-calendar-check-o"/>
-                    <span>Próxima entrega:</span>
-                    <strong>
-                      <t t-if="next_delivery"><t t-esc="next_delivery"/></t>
-                      <t t-else="">Por definir</t>
-                    </strong>
-                  </div>
-                </div>
-                
+                <div class="gp9-stage"><i class="fa fa-bookmark-o"/><span><t t-esc="p.x_portal_stage_name or 'Sin etapa'"/></span></div>
+                <div class="gp9-info-row"><div class="gp9-info-item-inline"><i class="fa fa-calendar-check-o"/><span>Entrega:</span><strong><t t-if="p.date"><t t-esc="p.date"/></t><t t-else="">Por definir</t></strong></div></div>
                 <div class="gp9-progress-section">
-                  <div class="gp9-progress-header">
-                    <span class="gp9-progress-label">Progreso</span>
-                    <span class="gp9-progress-value"><t t-esc="prog"/>%</span>
-                  </div>
-                  <div class="gp9-progress-track">
-                    <div t-attf-class="gp9-progress-bar gp9-progress-bar--#{risk_class}" t-attf-style="width: #{prog}%;"/>
-                  </div>
+                  <div class="gp9-progress-header"><span class="gp9-progress-label">Progreso</span><span class="gp9-progress-value"><t t-esc="prog"/>%</span></div>
+                  <div class="gp9-progress-track"><div t-attf-class="gp9-progress-bar gp9-progress-bar--#{risk_class}" t-attf-style="width: #{prog}%;"/></div>
                 </div>
-                
                 <div class="gp9-actions">
-                  <a class="gp9-btn-action" t-attf-href="/my/project/#{p.id}#chat">
-                    <i class="fa fa-comment-o"/>Chat
-                  </a>
-                  <a class="gp9-btn-action" t-attf-href="/my/project/#{p.id}#documents">
-                    <i class="fa fa-folder-o"/>Docs
-                  </a>
+                  <a class="gp9-btn-action" t-attf-href="/my/project/#{p.id}#chat"><i class="fa fa-comment-o"/>Chat</a>
+                  <a class="gp9-btn-action" t-attf-href="/my/project/#{p.id}#documents"><i class="fa fa-folder-o"/>Docs</a>
                 </div>
-                
                 <div class="gp9-actions-secondary">
-                  <a class="gp9-btn-secondary" t-attf-href="/my/project/#{p.id}#deliveries">
-                    <i class="fa fa-truck"/>Ver entregas
-                  </a>
-                  <a class="gp9-btn-secondary" t-attf-href="/my/project/#{p.id}#meeting">
-                    <i class="fa fa-calendar"/>Agendar reunión
-                  </a>
+                  <a class="gp9-btn-secondary" t-attf-href="/my/project/#{p.id}#deliveries"><i class="fa fa-truck"/>Entregas</a>
+                  <a class="gp9-btn-secondary" t-attf-href="/my/project/#{p.id}#meeting"><i class="fa fa-calendar"/>Reunión</a>
                 </div>
-                
-                <button type="button" class="gp9-btn-toggle" t-attf-data-target="gp9-details-#{uid}">
-                  <span class="gp9-btn-text">Ver detalles</span>
-                  <i class="fa fa-chevron-down"/>
-                </button>
-                
+                <button type="button" class="gp9-btn-toggle" t-attf-data-target="gp9-details-#{uid}"><span class="gp9-btn-text">Ver detalles</span><i class="fa fa-chevron-down"/></button>
                 <div class="gp9-details" t-attf-id="gp9-details-#{uid}">
-                  <div class="gp9-details-inner">
-                    <div class="gp9-details-content">
-                      
-                      <div t-attf-class="gp9-status-msg gp9-status-msg--#{risk_class}">
-                        <t t-if="risk == 'low'"><i class="fa fa-check-circle"/><span>Se espera cumplir la fecha planificada.</span></t>
-                        <t t-elif="risk == 'medium'"><i class="fa fa-exclamation-circle"/><span>Hay posibles retrasos; en seguimiento.</span></t>
-                        <t t-else=""><i class="fa fa-times-circle"/><span>Alto riesgo; se requiere revisión conjunta.</span></t>
-                      </div>
-                      
-                      <t t-if="p.date_start or p.date">
-                        <div class="gp9-info-item">
-                          <i class="fa fa-calendar"/>
-                          <span>
-                            <t t-if="p.date_start"><t t-esc="p.date_start"/></t>
-                            <t t-if="p.date_start and p.date"> → </t>
-                            <t t-if="p.date"><t t-esc="p.date"/></t>
-                          </span>
-                        </div>
-                      </t>
-                      
-                      <t t-if="p.partner_id">
-                        <div class="gp9-info-item">
-                          <i class="fa fa-user"/>
-                          <span><t t-esc="p.partner_id.name"/></span>
-                        </div>
-                      </t>
-                      
-                      <t t-if="p.x_studio_empleados_asignados_al_proyecto">
-                        <div class="gp9-team">
-                          <div class="gp9-team-label"><i class="fa fa-users"/>Equipo</div>
-                          <div class="gp9-team-list">
-                            <t t-foreach="p.x_studio_empleados_asignados_al_proyecto" t-as="emp">
-                              <span class="gp9-team-member"><t t-esc="emp.name"/></span>
-                            </t>
-                          </div>
-                        </div>
-                      </t>
-                      
-                      <t t-if="p.x_client_visible_notes">
-                        <div class="gp9-notes"><t t-out="p.x_client_visible_notes"/></div>
-                      </t>
-                      
-                      <a class="gp9-btn-project" t-attf-href="/my/project/#{p.id}">
-                        Ir al proyecto <i class="fa fa-arrow-right"/>
-                      </a>
-                      
+                  <div class="gp9-details-content">
+                    <div t-attf-class="gp9-status-msg gp9-status-msg--#{risk_class}">
+                      <t t-if="risk == 'low'"><i class="fa fa-check-circle"/><span>Todo en orden.</span></t>
+                      <t t-elif="risk == 'medium'"><i class="fa fa-exclamation-circle"/><span>En seguimiento.</span></t>
+                      <t t-else=""><i class="fa fa-times-circle"/><span>Requiere atención.</span></t>
                     </div>
+                    <t t-if="p.date_start or p.date"><div class="gp9-info-item"><i class="fa fa-calendar"/><span><t t-if="p.date_start"><t t-esc="p.date_start"/></t><t t-if="p.date_start and p.date"> → </t><t t-if="p.date"><t t-esc="p.date"/></t></span></div></t>
+                    <t t-if="p.partner_id"><div class="gp9-info-item"><i class="fa fa-user"/><span><t t-esc="p.partner_id.name"/></span></div></t>
+                    <t t-if="p.x_studio_empleados_asignados_al_proyecto"><div class="gp9-team"><div class="gp9-team-label"><i class="fa fa-users"/>Equipo</div><div class="gp9-team-list"><t t-foreach="p.x_studio_empleados_asignados_al_proyecto" t-as="emp"><span class="gp9-team-member"><t t-esc="emp.name"/></span></t></div></div></t>
+                    <t t-if="p.x_client_visible_notes"><div class="gp9-notes"><t t-out="p.x_client_visible_notes"/></div></t>
+                    <a class="gp9-btn-project" t-attf-href="/my/project/#{p.id}">Ir al proyecto <i class="fa fa-arrow-right"/></a>
                   </div>
                 </div>
-                
               </div>
             </div>
           </t>
         </div>
       </div>
 
-      <!-- JavaScript -->
       <script>
-      (function () {
-        function initGP9() {
-          // Toggle detalles
-          document.querySelectorAll('.gp9-btn-toggle').forEach(function (btn) {
-            if (btn._gp9) return;
-            btn._gp9 = true;
-            btn.addEventListener('click', function (e) {
-              e.preventDefault();
-              var targetId = this.getAttribute('data-target');
-              var target = document.getElementById(targetId);
-              if (!target) return;
-              var isOpen = target.classList.contains('is-open');
-              document.querySelectorAll('.gp9-details').forEach(function (d) { d.classList.remove('is-open'); });
-              document.querySelectorAll('.gp9-btn-toggle').forEach(function (b) {
-                b.classList.remove('is-active');
-                var t = b.querySelector('.gp9-btn-text');
-                if (t) t.innerText = 'Ver detalles';
-              });
-              if (!isOpen) {
-                target.classList.add('is-open');
-                this.classList.add('is-active');
-                var txt = this.querySelector('.gp9-btn-text');
-                if (txt) txt.innerText = 'Ocultar';
-              }
-            });
+      (function(){
+        document.querySelectorAll('.gp9-btn-toggle').forEach(function(btn){
+          btn.addEventListener('click',function(e){
+            e.preventDefault();
+            var target=document.getElementById(this.getAttribute('data-target'));
+            if(!target)return;
+            var isOpen=target.classList.contains('is-open');
+            target.classList.toggle('is-open');
+            this.classList.toggle('is-active');
+            var txt=this.querySelector('.gp9-btn-text');
+            if(txt)txt.innerText=isOpen?'Ver detalles':'Ocultar';
           });
-          
-          // Notificaciones dropdown
-          var notifBtn = document.getElementById('gp9NotifBtn');
-          var notifDrop = document.getElementById('gp9NotifDropdown');
-          if (notifBtn &amp;&amp; notifDrop) {
-            notifBtn.addEventListener('click', function(e) {
-              e.preventDefault();
-              e.stopPropagation();
-              notifDrop.classList.toggle('is-open');
-              notifBtn.classList.toggle('is-active');
-            });
-            document.addEventListener('click', function(e) {
-              if (!notifBtn.contains(e.target) &amp;&amp; !notifDrop.contains(e.target)) {
-                notifDrop.classList.remove('is-open');
-                notifBtn.classList.remove('is-active');
-              }
-            });
-            document.addEventListener('keydown', function(e) {
-              if (e.key === 'Escape') {
-                notifDrop.classList.remove('is-open');
-                notifBtn.classList.remove('is-active');
-              }
-            });
-          }
-          
-          // Tabs de notificaciones
-          document.querySelectorAll('.gp9-notif-tab').forEach(function(tab) {
-            tab.addEventListener('click', function() {
-              var tabName = this.getAttribute('data-tab');
-              document.querySelectorAll('.gp9-notif-tab').forEach(function(t) { t.classList.remove('is-active'); });
-              document.querySelectorAll('.gp9-notif-panel').forEach(function(p) { p.classList.remove('is-active'); });
-              this.classList.add('is-active');
-              var panel = document.getElementById(tabName === 'projects' ? 'gp9PanelProjects' : 'gp9PanelAdmin');
-              if (panel) panel.classList.add('is-active');
-            });
-          });
-          
-          // Marcar como leído al hacer click
-          document.querySelectorAll('.gp9-notif-item').forEach(function(item) {
-            item.addEventListener('click', function() {
-              var key = this.getAttribute('data-notif-key');
-              if (key) {
-                var read = JSON.parse(localStorage.getItem('gp9_read_notifs') || '[]');
-                if (read.indexOf(key) === -1) {
-                  read.push(key);
-                  localStorage.setItem('gp9_read_notifs', JSON.stringify(read));
-                }
-                this.classList.remove('is-unread');
-                var dot = this.querySelector('.gp9-notif-dot');
-                if (dot) dot.style.display = 'none';
-              }
-            });
-          });
-          
-          // Marcar todo como leído
-          var markAllBtn = document.getElementById('gp9MarkAllRead');
-          if (markAllBtn) {
-            markAllBtn.addEventListener('click', function() {
-              var read = JSON.parse(localStorage.getItem('gp9_read_notifs') || '[]');
-              document.querySelectorAll('.gp9-notif-item').forEach(function(item) {
-                var key = item.getAttribute('data-notif-key');
-                if (key &amp;&amp; read.indexOf(key) === -1) {
-                  read.push(key);
-                }
-                item.classList.remove('is-unread');
-                var dot = item.querySelector('.gp9-notif-dot');
-                if (dot) dot.style.display = 'none';
-              });
-              localStorage.setItem('gp9_read_notifs', JSON.stringify(read));
-              document.querySelectorAll('.gp9-notif-tab-badge').forEach(function(b) { b.style.display = 'none'; });
-              var mainBadge = document.querySelector('.gp9-notif-badge');
-              if (mainBadge) mainBadge.style.display = 'none';
-            });
-          }
-          
-          // Aplicar estado de leído desde localStorage
-          var readFromStorage = JSON.parse(localStorage.getItem('gp9_read_notifs') || '[]');
-          readFromStorage.forEach(function(key) {
-            var item = document.querySelector('[data-notif-key="' + key + '"]');
-            if (item) {
-              item.classList.remove('is-unread');
-              var dot = item.querySelector('.gp9-notif-dot');
-              if (dot) dot.style.display = 'none';
-            }
-          });
-          
-          // ========== CHATBOT GP9 ==========
-          var chatBtn = document.getElementById('gp9ChatBtn');
-          var chatPanel = document.getElementById('gp9ChatPanel');
-          var chatIframe = document.getElementById('gp9ChatIframe');
-          var chatBadge = document.getElementById('gp9ChatBadge');
-          var iframeLoaded = false;
-          
-          if (chatBtn &amp;&amp; chatPanel) {
-            chatBtn.addEventListener('click', function() {
-              var isOpen = chatPanel.classList.contains('is-open');
-              
-              if (!isOpen) {
-                chatPanel.classList.add('is-open');
-                chatBtn.classList.add('is-open');
-                chatBadge.classList.remove('is-visible');
-                
-                if (!iframeLoaded &amp;&amp; chatIframe) {
-                  chatIframe.src = chatIframe.getAttribute('data-src');
-                  iframeLoaded = true;
-                }
-                localStorage.setItem('gp9_chat_opened', 'true');
-              } else {
-                chatPanel.classList.remove('is-open');
-                chatBtn.classList.remove('is-open');
-              }
-            });
-            
-            document.addEventListener('keydown', function(e) {
-              if (e.key === 'Escape' &amp;&amp; chatPanel.classList.contains('is-open')) {
-                chatPanel.classList.remove('is-open');
-                chatBtn.classList.remove('is-open');
-              }
-            });
-            
-            if (!localStorage.getItem('gp9_chat_opened')) {
-              setTimeout(function() {
-                chatBadge.classList.add('is-visible');
-              }, 3000);
-            }
-          }
-          // ========== FIN CHATBOT GP9 ==========
-        }
-        
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initGP9);
-        } else {
-          initGP9();
-        }
+        });
+        var nb=document.getElementById('gp9NotifBtn'),nd=document.getElementById('gp9NotifDropdown');
+        if(nb&amp;&amp;nd){nb.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();nd.classList.toggle('is-open');nb.classList.toggle('is-active');});document.addEventListener('click',function(e){if(!nb.contains(e.target)&amp;&amp;!nd.contains(e.target)){nd.classList.remove('is-open');nb.classList.remove('is-active');}});}
+        document.querySelectorAll('.gp9-notif-tab').forEach(function(t){t.addEventListener('click',function(){var n=this.getAttribute('data-tab');document.querySelectorAll('.gp9-notif-tab').forEach(function(x){x.classList.remove('is-active');});document.querySelectorAll('.gp9-notif-panel').forEach(function(x){x.classList.remove('is-active');});this.classList.add('is-active');document.getElementById(n==='projects'?'gp9PanelProjects':'gp9PanelAdmin').classList.add('is-active');});});
+        var ma=document.getElementById('gp9MarkAllRead');if(ma){ma.addEventListener('click',function(){document.querySelectorAll('.gp9-notif-item').forEach(function(i){i.classList.remove('is-unread');var d=i.querySelector('.gp9-notif-dot');if(d)d.style.display='none';});document.querySelectorAll('.gp9-notif-badge').forEach(function(b){b.style.display='none';});});}
       })();
       </script>
     </t>
     
-    <!-- ========== CHATBOT GP9 WIDGET HTML ========== -->
-    <div class="gp9-chat-widget">
-      <button type="button" class="gp9-chat-btn" id="gp9ChatBtn" aria-label="Abrir chat">
-        <i class="fa fa-comment"/>
-        <i class="fa fa-times"/>
-        <span class="gp9-chat-badge" id="gp9ChatBadge">1</span>
-      </button>
-      
-      <div class="gp9-chat-panel" id="gp9ChatPanel">
-        <div class="gp9-chat-header">
-          <div class="gp9-chat-avatar">
-            <i class="fa fa-robot"/>
-          </div>
-          <div class="gp9-chat-header-info">
-            <h4>ChatGP9</h4>
-            <p><span class="gp9-chat-online-dot"/> Asistente virtual</p>
-          </div>
-        </div>
-        <div class="gp9-chat-body">
-          <iframe id="gp9ChatIframe" src="" data-src="https://chatgp9.app.n8n.cloud/webhook/7638ccd5-b293-4916-9495-6a4fbf306d9d/chat" allow="microphone" title="Chat GP9 Consulting">
-          </iframe>
-        </div>
-      </div>
-    </div>
-    <!-- ========== FIN CHATBOT GP9 WIDGET HTML ========== -->
+    <script type="module">
+      import{createChat}from'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+      createChat({webhookUrl:'https://gp9chat.app.n8n.cloud/webhook/chatgp9-v3-prod/chat',mode:'window',showWelcomeScreen:!1,loadPreviousSession:!1,initialMessages:[],i18n:{en:{title:'ChatGP9',subtitle:'Asistente GP9',footer:'',getStarted:'Nueva conversación',inputPlaceholder:'Escribe...',closeButtonTooltip:'Cerrar'}}});
+      var s=document.createElement('style');s.textContent='.chat-message-from-user{background:#1e293b!important;border-radius:1rem 1rem 0 1rem!important;padding:.75rem 1rem!important}.chat-message-from-user .chat-message-markdown,.chat-message-from-user p{color:#fff!important}';document.head.appendChild(s);
+    </script>
     
   </xpath>
   
