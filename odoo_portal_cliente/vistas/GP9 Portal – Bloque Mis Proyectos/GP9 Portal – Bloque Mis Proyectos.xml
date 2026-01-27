@@ -175,7 +175,7 @@
     <t t-set="chat_messages" t-value="request.env['x_portal_message'].sudo().search([('x_project_id', 'in', project_ids), ('x_is_from_staff', '=', True), ('x_confirmacion_lectura', '=', False)], limit=15, order='create_date desc')"/>
     <t t-set="invoices" t-value="request.env['account.move'].sudo().search([('partner_id', '=', partner_id), ('move_type', 'in', ['out_invoice', 'out_refund']), ('state', '=', 'posted')], limit=10, order='invoice_date desc')"/>
     <t t-set="quotations" t-value="request.env['sale.order'].sudo().search([('partner_id', '=', partner_id), ('state', 'in', ['sent', 'draft'])], limit=10, order='date_order desc')"/>
-    <t t-set="unread_msg_count" t-value="len([m for m in chat_messages if not m.x_confirmacion_lectura])"/>
+    <t t-set="unread_msg_count" t-value="len(chat_messages)"/>
     <t t-set="total_unread" t-value="unread_msg_count + len(invoices) + len(quotations)"/>
 
     <t t-if="projects_list">
