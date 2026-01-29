@@ -264,7 +264,7 @@
                       <t t-else=""><i class="fa fa-times-circle"/><span>Requiere atención.</span></t>
                     </div>
                     <t t-if="p.date_start or p.date"><div class="gp9-info-item"><i class="fa fa-calendar"/><span><t t-if="p.date_start"><t t-esc="p.date_start"/></t><t t-if="p.date_start and p.date"> → </t><t t-if="p.date"><t t-esc="p.date"/></t></span></div></t>
-                    <t t-if="p.partner_id"><div class="gp9-info-item"><i class="fa fa-user"/><span><t t-esc="p.partner_id.name"/></span></div></t>
+                    <t t-if="p.x_studio_many2many_field_0UY78"><div class="gp9-team"><div class="gp9-team-label"><i class="fa fa-user-circle-o"/>Project Manager</div><div class="gp9-team-list"><span class="gp9-team-member"><t t-esc="p.x_studio_many2many_field_0UY78[0].name"/></span></div></div></t>
                     <t t-if="p.x_studio_empleados_asignados_al_proyecto"><div class="gp9-team"><div class="gp9-team-label"><i class="fa fa-users"/>Equipo</div><div class="gp9-team-list"><t t-foreach="p.x_studio_empleados_asignados_al_proyecto" t-as="emp"><span class="gp9-team-member"><t t-esc="emp.name"/></span></t></div></div></t>
                     <t t-if="p.x_client_visible_notes"><div class="gp9-notes"><t t-out="p.x_client_visible_notes"/></div></t>
                     <a class="gp9-btn-project" t-attf-href="/my/project/#{p.id}">Ir al proyecto <i class="fa fa-arrow-right"/></a>
